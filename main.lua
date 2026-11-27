@@ -24,7 +24,7 @@ function proceed_loop(goingForward)
     if(gGlobalSyncTable.currentAnomaly > 0) then
         goingForward = not goingForward
     end
-    debug_log((goingForward and "proceeding forward" or "back to exit 0"))
+    debug_log((goingForward and ("proceeding to exit " .. tostring(gGlobalSyncTable.exitNum + 1)) or "back to exit 0"))
     if(gNetworkPlayers[0].globalIndex == 0) then
         gGlobalSyncTable.exitNum = goingForward and (gGlobalSyncTable.exitNum + 1) or 0
     end
