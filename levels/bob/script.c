@@ -1,0 +1,122 @@
+#include <ultra64.h>
+#include "sm64.h"
+#include "behavior_data.h"
+#include "model_ids.h"
+#include "seq_ids.h"
+#include "dialog_ids.h"
+#include "segment_symbols.h"
+#include "level_commands.h"
+
+#include "game/level_update.h"
+
+#include "levels/scripts.h"
+
+#include "make_const_nonconst.h"
+#include "levels/bob/header.h"
+
+/* Fast64 begin persistent block [scripts] */
+/* Fast64 end persistent block [scripts] */
+
+const LevelScript level_bob_entry[] = {
+	INIT_LEVEL(),
+	LOAD_MIO0(0x7, _bob_segment_7SegmentRomStart, _bob_segment_7SegmentRomEnd), 
+	LOAD_MIO0(0xa, _water_skybox_mio0SegmentRomStart, _water_skybox_mio0SegmentRomEnd), 
+	ALLOC_LEVEL_POOL(),
+	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	/* Fast64 begin persistent block [level commands] */
+	/* Fast64 end persistent block [level commands] */
+
+	AREA(1, bob_area_1),
+		WARP_NODE(0xF0, LEVEL_CASTLE_GROUNDS, 0x01, 0xF0, WARP_NO_CHECKPOINT),
+		WARP_NODE(0xF1, LEVEL_CASTLE_GROUNDS, 0x01, 0xF0, WARP_NO_CHECKPOINT),
+		WARP_NODE(0xF2, LEVEL_CASTLE_GROUNDS, 0x01, 0xF0, WARP_NO_CHECKPOINT),
+		WARP_NODE(0xF3, LEVEL_CASTLE_GROUNDS, 0x01, 0xF0, WARP_NO_CHECKPOINT),
+		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0xF0, WARP_NO_CHECKPOINT),
+		OBJECT(E_MODEL_NONE, -7430, 1500, 873, 0, 0, 0, 0x00000000, bhvBirdsSoundLoop),
+		OBJECT(E_MODEL_NONE, -80, 1500, 5004, 0, 0, 0, 0x00010000, bhvBirdsSoundLoop),
+		OBJECT(E_MODEL_NONE, 7131, 1500, -2989, 0, 0, 0, 0x00020000, bhvBirdsSoundLoop),
+		OBJECT(E_MODEL_NONE, -7430, 1500, -5937, 0, 0, 0, 0x00000000, bhvAmbientSounds),
+		OBJECT(E_MODEL_NONE, 5223, -975, 1667, 0, 0, 0, 0x00000000, bhvManyBlueFishSpawner),
+		OBJECT(MODEL_NONE, -1328, 260, 4664, 0, -180, 0, (0xF0 << 16), bhvSpinAirborneWarp),
+		OBJECT(MODEL_NONE, -1328, 260, 4664, 0, -180, 0, (0x0A << 16), bhvSpinAirborneWarp),
+		OBJECT(E_MODEL_BITS_WARP_PIPE, -1328, 260, 4664, 0, 0, 0, (0xF0 << 16), bhvWarpPipe),
+		OBJECT(E_MODEL_NONE, -5812, 100, -5937, 0, 0, 0, 0x00000000, bhvWaterfallSoundLoop),
+		OBJECT(E_MODEL_BUBBLY_TREE, -1333, 711, 1881, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, -6220, 468, 3458, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, -5069, 350, 3221, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, -2566, 438, 2626, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, -1900, 401, 2868, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, 6399, 494, -1680, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, 767, 498, 2598, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, 1476, 189, 3280, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, 3153, 206, 469, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, 6178, 219, 167, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, -6510, 260, 1411, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, 5457, 528, -3259, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, 5868, 698, -4453, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, 6408, 869, -5314, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, -4711, 342, 433, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, 1132, 365, 1977, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, -5506, 364, -661, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, -6269, 402, -2145, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, -5600, 440, -2627, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, 1919, 268, 1157, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, -5957, 517, -3447, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, -2021, 633, 1468, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, -109, 613, 3008, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, 5774, 413, -1114, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, 5954, 526, -2846, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_BUBBLY_TREE, -5204, 296, 811, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(E_MODEL_CASTLE_CASTLE_DOOR, -76, 803, -3155, 0, 0, 0, 0x00000000, bhvDoor),
+		OBJECT(E_MODEL_CASTLE_CASTLE_DOOR, 77, 803, -3155, 0, -180, 0, 0x00000000, bhvDoor),
+		OBJECT(E_MODEL_CASTLE_GROUNDS_METAL_DOOR, 3292, -511, -2931, 0, -136, 0, 0x00000000, bhvDoor),
+		OBJECT(E_MODEL_CASTLE_GROUNDS_FLAG, -3213, 3348, -3011, 0, 0, 0, 0x00000000, bhvCastleFlagWaving),
+		OBJECT(E_MODEL_CASTLE_GROUNDS_FLAG, 3213, 3348, -3011, 0, 0, 0, 0x00000000, bhvCastleFlagWaving),
+		OBJECT(E_MODEL_CASTLE_GROUNDS_FLAG, -3835, 3348, -6647, 0, 0, 0, 0x00000000, bhvCastleFlagWaving),
+		OBJECT(E_MODEL_CASTLE_GROUNDS_FLAG, 3835, 3348, -6647, 0, 0, 0, 0x00000000, bhvCastleFlagWaving),
+		OBJECT(E_MODEL_BIRDS, -5069, 850, 3221, 0, 0, 0, 0x00010000, bhvBird),
+		OBJECT(E_MODEL_BIRDS, -4711, 742, 433, 0, 0, 0, 0x00010000, bhvBird),
+		OBJECT(E_MODEL_BIRDS, 5774, 913, -1114, 0, 0, 0, 0x00010000, bhvBird),
+		OBJECT(E_MODEL_YOSHI, 0, 3174, -5625, 0, 0, 0, 0x00000000, bhvYoshi),
+		OBJECT(E_MODEL_LAKITU, 11, 803, -3015, 0, 0, 0, 0x00010000, bhvCameraLakitu),
+		OBJECT(E_MODEL_EXCLAMATION_BOX, 13, 3476, -5646, 0, 0, 0, 0x00000000, bhvExclamationBox),
+		OBJECT(E_MODEL_MIST, -4878, -787, -5690, 0, 0, 0, 0x00000000, bhvWaterMist2),
+		OBJECT(E_MODEL_MIST, -4996, -787, -5548, 0, 0, 0, 0x00000000, bhvWaterMist2),
+		OBJECT(E_MODEL_MIST, -5114, -787, -5406, 0, 0, 0, 0x00000000, bhvWaterMist2),
+		OBJECT(E_MODEL_MIST, -5212, -787, -5219, 0, 0, 0, 0x00000000, bhvWaterMist2),
+		OBJECT(E_MODEL_MIST, -5311, -787, -5033, 0, 0, 0, 0x00000000, bhvWaterMist2),
+		OBJECT(E_MODEL_MIST, -5419, -787, -4895, 0, 0, 0, 0x00000000, bhvWaterMist2),
+		OBJECT(E_MODEL_MIST, -5527, -787, -4757, 0, 0, 0, 0x00000000, bhvWaterMist2),
+		OBJECT(E_MODEL_MIST, -5686, -787, -4733, 0, 0, 0, 0x00000000, bhvWaterMist2),
+		OBJECT(E_MODEL_MIST, -5845, -787, -4710, 0, 0, 0, 0x00000000, bhvWaterMist2),
+		OBJECT(E_MODEL_BUTTERFLY, -4508, 406, 4400, 0, 0, 0, 0x00000000, bhvButterfly),
+		OBJECT(E_MODEL_BUTTERFLY, -4408, 406, 4500, 0, 0, 0, 0x00000000, bhvButterfly),
+		OBJECT(E_MODEL_BUTTERFLY, -4708, 406, 4100, 0, 0, 0, 0x00000000, bhvButterfly),
+		OBJECT(E_MODEL_BUTTERFLY, -6003, 473, -2621, 0, 0, 0, 0x00000000, bhvButterfly),
+		OBJECT(E_MODEL_BUTTERFLY, -6003, 473, -2321, 0, 0, 0, 0x00000000, bhvButterfly),
+		OBJECT(E_MODEL_BUTTERFLY, 6543, 461, -617, 0, 0, 0, 0x00000000, bhvButterfly),
+		OBJECT(E_MODEL_BUTTERFLY, 6143, 461, -617, 0, 0, 0, 0x00000000, bhvButterfly),
+		OBJECT(E_MODEL_BUTTERFLY, 5773, 775, -5722, 0, 0, 0, 0x00000000, bhvButterfly),
+		OBJECT(E_MODEL_BUTTERFLY, 5873, 775, -5622, 0, 0, 0, 0x00000000, bhvButterfly),
+		OBJECT(E_MODEL_BUTTERFLY, 5473, 775, -5322, 0, 0, 0, 0x00000000, bhvButterfly),
+		OBJECT(E_MODEL_BUTTERFLY, -1504, 326, 3196, 0, 0, 0, 0x00000000, bhvButterfly),
+		OBJECT(E_MODEL_BUTTERFLY, -1204, 326, 3296, 0, 0, 0, 0x00000000, bhvButterfly),
+		OBJECT(E_MODEL_1UP, -440, 3180, -5000, 0, 0, 0, 0x00000000, bhv1Up),
+		OBJECT(E_MODEL_1UP, 0, 3180, -5200, 0, 0, 0, 0x00000000, bhv1Up),
+		OBJECT(E_MODEL_1UP, 440, 3180, -5000, 0, 0, 0, 0x00000000, bhv1Up),
+		MARIO_POS(0x01, -180, -1328, 260, 4664),
+		TERRAIN(bob_area_1_collision),
+		MACRO_OBJECTS(bob_area_1_macro_objs),
+		STOP_MUSIC(0),
+		TERRAIN_TYPE(TERRAIN_GRASS),
+		/* Fast64 begin persistent block [area commands] */
+		/* Fast64 end persistent block [area commands] */
+	END_AREA(),
+	FREE_LEVEL_POOL(),
+	MARIO_POS(0x01, -180, -1328, 260, 4664),
+	CALL(0, lvl_init_or_update),
+	CALL_LOOP(1, lvl_init_or_update),
+	CLEAR_LEVEL(),
+	SLEEP_BEFORE_EXIT(1),
+	EXIT(),
+};
