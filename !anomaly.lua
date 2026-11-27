@@ -10,6 +10,12 @@ gGlobalSyncTable.currentAnomaly = 0
 
 local anomaly_table = {}
 
+function debug_log(msg)
+    if(network_is_server() and ANOMALY_DEVMODE) then
+        log_to_console(msg)
+    end
+end
+
 -- todo: give a warning when an anomaly attempts to hook any of these
 local unsupportedHooks = {
     HOOK_ON_LEVEL_INIT, -- overlaps with ON_WARP, so ON_WARP is used for both scenarios. 

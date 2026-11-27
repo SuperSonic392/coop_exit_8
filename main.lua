@@ -11,12 +11,6 @@ local looping = false
 
 gGlobalSyncTable.exitNum = 0
 
-function debug_log(msg)
-    if(network_is_server() and ANOMALY_DEVMODE) then
-        log_to_console(msg)
-    end
-end
-
 smlua_text_utils_course_acts_replace(COURSE_BOB, "1  Castle Grounds", "1", "2", "3", "4", "5", "6")
 smlua_text_utils_course_acts_replace(COURSE_WF, "2  Castle Grounds", "1", "2", "3", "4", "5", "6")
 
