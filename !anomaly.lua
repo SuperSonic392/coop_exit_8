@@ -21,7 +21,7 @@ local unsupportedHooks = {
     HOOK_USE_ACT_SELECT, -- very impossible
     HOOK_ON_SCREEN_TRANSITION, -- please don't
     HOOK_JOINED_GAME, -- shouldn't ever be used in an anomaly
-    HOOK_MIRROR_MARIO_RENDER, -- there are no mirror mario's in the castle grounds
+    HOOK_MIRROR_MARIO_RENDER, -- there are no mirror marios in the castle grounds
     HOOK_ON_SEQ_LOAD, -- use hook_event
     HOOK_ON_GEO_PROCESS, -- use hook_event
     HOOK_BEFORE_GEO_PROCESS, -- use hook_event
