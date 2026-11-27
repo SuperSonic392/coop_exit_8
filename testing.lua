@@ -1,3 +1,7 @@
+if not ANOMALY_PLAYTEST then
+    return
+end
+
 gServerSettings.headlessServer = 1
 
 local msg_join = 

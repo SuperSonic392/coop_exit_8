@@ -1,6 +1,8 @@
--- name: {PLAYTEST} Exit 64
--- description: \\#ff8b8b\\ Legal note: You do not need to do 64 exits. Only 8. 
+-- name: Exit 64
+-- description: \\#ff8b8b\\Legal note: You do not need to do 64 exits. Only 8. 
 
+ANOMALY_DEVMODE = true
+ANOMALY_PLAYTEST = false
 
 PACKET_SECRET_PROCEED = "PACKET_SECRET_PROCEED"
 
@@ -9,8 +11,8 @@ local looping = false
 
 gGlobalSyncTable.exitNum = 0
 
-local function debug_log(msg)
-    if(network_is_server()) then
+function debug_log(msg)
+    if(network_is_server() and ANOMALY_DEVMODE) then
         log_to_console(msg)
     end
 end
@@ -31,7 +33,8 @@ function proceed_loop(goingForward)
     play_transition(WARP_TRANSITION_FADE_INTO_COLOR, 25, 0, 0, 0)
 end
 
-function network_proceed_loop(goingForward)
+function network_proceed_loop(goingForward) -- todo: vote system
+    -- block players from starting 2 loops at once. 
     if(looping) then
         return
     end
@@ -46,12 +49,14 @@ hook_event(HOOK_UPDATE,
             if(transition_timer == 25) then
                 warp_to_level(LEVEL_WF, 1, 0) -- go somewhere else during the transition so that the map can properly reset in multiplayer
             end
-            if(transition_timer == 26) then
+
+            if(transition_timer == 26) then -- every player selects a differen anomaly... Todo: Anything else! (While still maintaining Mirage support because that would be cool)
                 gGlobalSyncTable.currentAnomaly = select_random_anomaly()
                 debug_log("selected new anomaly")
             end
+
             if(transition_timer <= 0) then
-                warp_to_level(LEVEL_BOB, 1, gGlobalSyncTable.exitNum)
+                warp_to_level(LEVEL_BOB, 1, 0)
                 debug_log(get_anomaly(gGlobalSyncTable.currentAnomaly).name)
                 gMarioStates[0].action = ACT_DISAPPEARED
                 looping = false
@@ -134,7 +139,7 @@ hook_event(HOOK_ON_LEVEL_INIT,
             return
         end
         if(gNetworkPlayers[0].currLevelNum ~= LEVEL_BOB) then
-            warp_to_level(LEVEL_BOB, 1, gGlobalSyncTable.exitNum)
+            warp_to_level(LEVEL_BOB, 1, 0)
         end
         set_mario_action(gMarioStates[0], ACT_EMERGE_FROM_PIPE, 0)
         return run_anomaly_hooks(HOOK_ON_WARP)
