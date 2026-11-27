@@ -58,7 +58,7 @@ A: gServerSettings.headlessServer = 1\
 "
 local msg_faq_download = 
 "Q: Where can I download Exit 64?\
-A: https://github.com/SuperSonic392\
+A: https://github.com/SuperSonic392/coop_exit_8\
 Remember to read the rest of this FAQ.\
 Since I know this is the first answer you'll see.\
 "
