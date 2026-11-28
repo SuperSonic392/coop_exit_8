@@ -280,30 +280,15 @@ hook_event(HOOK_MARIO_UPDATE,
     end
 )
 
----@param obj Object
-local function bhv_warp_pipe_init(obj)
-    local hitbox = get_temp_object_hitbox()
-    hitbox.height = 50
-    hitbox.radius = 100
-    obj_set_hitbox(obj, hitbox)
-    obj.collisionData = gGlobalObjectCollisionData.warp_pipe_seg3_collision_03009AC8
-    obj.oCollisionDistance = 1000
-end
-
----@param obj Object
-local function bhv_warp_pipe_loop(obj)
-    load_object_collision_model()
-
-    local m = gMarioStates[0] ---@type MarioState
-    if(m.action ~= ACT_EMERGE_FROM_PIPE and m.action ~= ACT_DISAPPEARED and obj_check_hitbox_overlap(obj, m.marioObj)) then
-        play_sound(SOUND_MENU_ENTER_PIPE, m.marioObj.header.gfx.cameraToObject)
-        set_mario_action(m, ACT_DISAPPEARED, 0)
-        network_proceed_loop(false)
-    end
-end
-
 hook_event(HOOK_ON_MODS_LOADED, function ()
     gGlobalSyncTable.currentAnomaly = select_random_anomaly()
 end)
 
-id_bhvWarpPipe = hook_behavior(id_bhvWarpPipe, OBJ_LIST_SURFACE, true, bhv_warp_pipe_init, bhv_warp_pipe_loop, "bhvWarpPipe")
+hook_event(HOOK_ON_HUD_RENDER, 
+    function ()
+        if(gNetworkPlayers[0].currLevelNum == LEVEL_WF) then
+            djui_hud_print_text("Entering Exit " .. tostring(gGlobalSyncTable.exitNum), 256, 256, 1)
+            djui_hud_print_text("This screen is a placeholder", 512, 512, 1)
+        end
+    end
+)
